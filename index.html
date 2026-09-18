@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aryan Gaur — Purdue Data Science & AI student building fast systems, ML and products.">
+<title>Aryan Gaur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&display=swap">
+<style>
+:root{
+  --ground:#FBF8F4; --panel:#FFFFFFCC; --ink:#231F3A; --muted:#6B6590; --line:#E7E1F2;
+  --accent:#6A4FE0; --lav:#B7A6FF; --peach:#FFB38A; --mint:#3FB58A;
+  --bid:#2E9A6E; --ask:#E0674A; --chip:#F0ECFB;
+  --display:"Syne",ui-sans-serif,system-ui,sans-serif;
+  --body:"Manrope",ui-sans-serif,system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:linear-gradient(160deg,#F3F0FF 0%,#FFF6EC 45%,#EEF8F4 100%) fixed,var(--ground);color:var(--ink);font:16px/1.65 var(--body);padding-inline:20px}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 80px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mono{font-size:13px;color:var(--muted)}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:#ffffffb3;backdrop-filter:blur(10px);border:1px solid #ffffff;border-radius:999px;padding:8px 10px 8px 20px;box-shadow:0 4px 20px #231F3A10}
+nav>span{font:800 16px var(--display);color:var(--ink)}
+nav div{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;padding:5px 12px;border-radius:999px;font-size:14px;font-weight:600}
+nav a:hover{background:var(--chip);color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;padding-block:64px 56px;align-items:center}
+h1{font:800 clamp(46px,7.5vw,84px)/1 var(--display);letter-spacing:-.02em;margin:0 0 18px}
+h1 br{display:none}
+.lede{font-size:19px;max-width:36ch;margin:0 0 18px;text-wrap:pretty}
+.meta{display:flex;flex-direction:column;gap:2px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{font:600 14px var(--body);padding:10px 18px;border-radius:999px;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:#ffffffcc;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.fill{background:var(--ink);color:#fff;border-color:var(--ink)}
+h2{font:800 36px/1.1 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+section{padding-block:48px}
+.shead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.shead p{color:var(--muted);margin:0}
+/* order book */
+.book{position:relative;background:#ffffffd9;border-radius:24px;padding:20px;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;box-shadow:0 20px 50px #B7A6FF40}
+.book::before{content:"";position:absolute;inset:-18px -14px auto auto;width:120px;height:120px;border-radius:42% 58% 55% 45%/50% 40% 60% 50%;background:radial-gradient(circle at 30% 30%,var(--lav),var(--peach) 70%);z-index:-1}
+.book-top{display:flex;justify-content:space-between;color:var(--muted);margin-bottom:10px;gap:8px;flex-wrap:wrap;font-family:var(--body);font-weight:600}
+.lvl{display:grid;grid-template-columns:1fr 1fr;position:relative;padding:2px 8px;border-radius:6px;overflow:hidden}
+.lvl span:last-child{text-align:right}
+.lvl i{position:absolute;inset:0 0 0 auto;opacity:.15;border-radius:6px}
+.lvl.a{color:var(--ask)} .lvl.a i{background:var(--ask)}
+.lvl.b{color:var(--bid)} .lvl.b i{background:var(--bid)}
+.spread{margin:6px 0;padding:5px 8px;color:var(--muted);display:flex;justify-content:space-between;background:var(--chip);border-radius:8px}
+.tape{margin-top:10px;color:var(--muted);height:40px;overflow:hidden;font-size:12px}
+.book-btns{display:flex;gap:8px;margin-top:12px}
+.book-btns button{flex:1;font:600 13px var(--body);padding:9px;border-radius:999px;border:0;background:var(--ink);color:#fff;cursor:pointer}
+.book-btns button+button{background:var(--chip);color:var(--ink)}
+/* experience */
+.job{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px;background:var(--panel);border-radius:22px;margin-bottom:12px}
+.job h3{font:800 22px/1.3 var(--display);margin:0}
+.job .role{color:var(--muted);margin:2px 0 10px;font-weight:600}
+.job ul{margin:0;padding-left:18px;max-width:68ch}
+.job li+li{margin-top:6px}
+.when{font-weight:600;color:var(--accent)}
+/* projects */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{font:600 13px var(--body);padding:7px 14px;border-radius:999px;border:0;background:#ffffffb3;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--panel);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px #231F3A14}
+.card.feature{grid-column:1/-1}
+.card h3{font:800 23px/1.2 var(--display);margin:0}
+.card p{margin:0}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{font:600 12px var(--body);background:var(--chip);color:var(--muted);padding:3px 10px;border-radius:999px}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px;font-size:14px;font-weight:600}
+.links a{text-decoration:none;background:var(--ink);color:#fff;padding:7px 14px;border-radius:999px}
+.links a+a{background:var(--chip);color:var(--ink)}
+.status{font:700 11px var(--body);letter-spacing:.08em;color:var(--muted)}
+.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:6px;vertical-align:1px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin:4px 0}
+.stats b{display:block;font:800 28px var(--display);background:linear-gradient(90deg,var(--accent),#E0874A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats small{color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two>div{background:var(--panel);border-radius:22px;padding:24px}
+.two h2{font-size:28px}
+.skills dt{font-weight:700;margin-top:12px}
+.skills dd{margin:2px 0 0;color:var(--muted)}
+footer{background:var(--ink);color:#E6E1FA;border-radius:22px;padding:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:var(--lav)}
+@media (max-width:760px){
+  .hero,.two{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:4px}
+  .grid{grid-template-columns:1fr}
+  nav{border-radius:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<nav>
+  <span class="mono">aryan gaur</span>
+  <div><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+</nav>
+
+<header class="hero">
+  <div>
+    <h1>Hey, I’m Aryan.</h1>
+    <p class="lede">I build fast systems and useful products — a 4–7&nbsp;ns order-book engine, RL market makers, and a platform where engineers practice real incidents.</p>
+    <div class="meta mono">
+      <span>B.S. Data Science &amp; AI · Purdue University · 2028</span>
+      <span>Seeking Summer 2027 SWE &amp; Data/ML internships · US / remote</span>
+    </div>
+    <div class="cta">
+      <a class="btn fill" href="#projects">See projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/aryan-gaur-139a16290" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/agcodin" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <div class="book" aria-label="Interactive limit order book demo">
+    <div class="book-top"><span>LOB · SIM</span><span id="px">mid —</span></div>
+    <div id="asks"></div>
+    <div class="spread"><span>spread</span><span id="spr">—</span></div>
+    <div id="bids"></div>
+    <div class="book-btns"><button id="buy">Market buy 40</button><button id="sell">Market sell 40</button></div>
+    <div class="tape" id="tape">Price-time priority matching, running in your browser.</div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="shead"><h2>Experience</h2><p>Where I’ve worked and built</p></div>
+
+  <div class="job">
+    <div class="when mono">JUL 2026 — NOW</div>
+    <div>
+      <h3>RepoRehearsal</h3>
+      <div class="role">Founder · <a href="https://reporehearsal.com" target="_blank" rel="noopener">reporehearsal.com</a></div>
+      <ul>
+        <li>Founded and shipped a platform that turns real production incidents into safe, scored practice environments — without ever modifying the source repo. 37 users, 42 sessions, 62.6% came back for a second.</li>
+        <li>Built the engine that clones any repo into an isolated sandbox, injects a deterministic fault, and grades repairs on diagnosis, investigation, fix quality, verification, prevention and communication. 274 repos indexed.</li>
+        <li>Designed three modes: individual practice, a daily community challenge, and a manager workflow that turns a real pull request into a team training incident.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when mono">JUL 2026 — NOW</div>
+    <div>
+      <h3>CodePath</h3>
+      <div class="role">AI Systems Developer · Cohort Member</div>
+      <ul>
+        <li>Selected for a competitive AI engineering program focused on production-grade Python systems.</li>
+        <li>Deployed four standalone apps — RAG pipelines, multi-tool agents, and a moderation API with prompt-injection defenses — using Flask and ChromaDB.</li>
+        <li>Debugged large unfamiliar codebases and contributed to open source by resolving complex merge conflicts during active review.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when mono">JUN 2024 — FEB 2025</div>
+    <div>
+      <h3>Estavel AI</h3>
+      <div class="role">Product Developer</div>
+      <ul>
+        <li>Built an AI model that helps large companies with legal proceedings, document drafting and workload management, alongside 4 engineers and legal advisors.</li>
+        <li>Cut drafting time on most tasks by ~80% for pilot legal teams, across roughly 8,000 documents.</li>
+        <li>Onboarded 3 pilot law firms, reaching 17 active users.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="shead"><h2>Projects</h2><p>Live demos where they exist; code where it’s public</p></div>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button aria-pressed="true" data-f="all">All</button>
+    <button aria-pressed="false" data-f="ai">AI &amp; agents</button>
+    <button aria-pressed="false" data-f="quant">Quant &amp; systems</button>
+    <button aria-pressed="false" data-f="web">Web</button>
+    <button aria-pressed="false" data-f="apple">macOS / iOS</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <article class="card feature" data-cat="ai web">
+      <span class="status live">LIVE PRODUCT</span>
+      <h3>RepoRehearsal</h3>
+      <p>Break it safely, debug it seriously. RepoRehearsal analyzes a codebase, injects a realistic failure into an isolated copy, and walks engineers through diagnosing, fixing, verifying and preventing the incident — then scores them. It’s incident-response practice, not automated bug fixing.</p>
+      <div class="stats"><div><b>37</b><small>users</small></div><div><b>62.6%</b><small>return rate</small></div><div><b>274</b><small>repos indexed</small></div></div>
+      <div class="tags"><span>TypeScript</span><span>Cloudflare Workers</span><span>Sandboxes</span><span>LLM grading</span></div>
+      <div class="links"><a href="https://reporehearsal.com" target="_blank" rel="noopener">Open live demo ↗</a><a href="https://github.com/agcodin/reporehearsal" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card feature" data-cat="quant">
+      <span class="status">DEMO ABOVE · IN-BROWSER SIM</span>
+      <h3>Limit Order Book Engine &amp; RL Market Makers</h3>
+      <p>A zero-heap-allocation C++20 matching engine (4–7&nbsp;ns median per operation) using a pre-allocated object pool, intrusive price levels and a direct-indexed price map, bound to Python with pybind11 over zero-copy NumPy buffers. PPO agents trained through self-play against Hawkes-clustered order flow and informed traders beat the Avellaneda–Stoikov strategy in an adverse-selection regime where it lost money. A GRU estimator recovers the hidden fair value from order flow and feeds the policy directly.</p>
+      <div class="tags"><span>C++20</span><span>pybind11</span><span>PyTorch</span><span>PPO</span><span>GRU</span></div>
+      <div class="links"><a href="#top" onclick="document.querySelector('.book').scrollIntoView({behavior:'smooth'});return false">Try the order book ↑</a><a href="https://github.com/agcodin/lob-rl-market-maker" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card" data-cat="quant">
+      <span class="status">PRIVATE · BACKTESTED</span>
+      <h3>Polymarket Consensus Bot</h3>
+      <p>Scores the top 200 Polymarket traders on win rate, profit factor and drawdown, and enters when enough qualified traders converge on a market — filtered by category, price range and freshness. Exits when that group starts selling. Two-year backtest: 125.8% simulated return, 53.1% win rate, Sharpe 1.4. Ships with a simulation dashboard and per-signal audit logs.</p>
+      <div class="tags"><span>Python</span><span>Backtesting</span><span>Dashboard</span></div>
+      <div class="links"><a href="mailto:aryangaur926@gmail.com?subject=Polymarket%20bot%20demo">Request a walkthrough</a></div>
+    </article>
+
+    <article class="card" data-cat="quant">
+      <span class="status">SIMULATOR</span>
+      <h3>Solana Copy-Trader Simulator</h3>
+      <p>Paper-trades a target wallet’s live swaps with realistic latency, live Jupiter pricing and network fees. No private keys, no signing, no real funds — every trade is a row in a local ledger, so you can see whether copying a wallet would actually pay.</p>
+      <div class="tags"><span>Python</span><span>Solana</span><span>Jupiter API</span></div>
+    </article>
+
+    <article class="card" data-cat="ai">
+      <span class="status">SLACK AGENT BUILDER CHALLENGE</span>
+      <h3>Sentinel Agent</h3>
+      <p>A Slack agent that breaks a goal into tracked tasks, follows progress from git branches and team chat, and doubles as a security assistant: paste a dependency manifest and it checks the National Vulnerability Database and replies with the exact upgrade command.</p>
+      <div class="tags"><span>Slack API</span><span>NVD</span><span>Agents</span></div>
+    </article>
+
+    <article class="card" data-cat="ai web">
+      <span class="status">WEB APP</span>
+      <h3>BlockSmith</h3>
+      <p>Describe a Minecraft build in plain English and get a 3D voxel preview, a supply list in stack counts, and a layer-by-layer guide you can follow in-game.</p>
+      <div class="tags"><span>LLM</span><span>3D voxels</span><span>JavaScript</span></div>
+    </article>
+
+    <article class="card" data-cat="web">
+      <span class="status live">LIVE</span>
+      <h3>Hourbook</h3>
+      <p>Track where your time goes: log sessions on a month calendar, see totals per category, and attach your own metric (points won, pages read, calories). Works offline in the browser; Google sign-in syncs across devices through Firebase.</p>
+      <div class="tags"><span>JavaScript</span><span>Firebase</span></div>
+      <div class="links"><a href="https://agcodin.github.io/hourbook/" target="_blank" rel="noopener">Open live demo ↗</a><a href="https://github.com/agcodin/hourbook" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card feature" data-cat="ai">
+      <span class="status">PYTHON · ON-DEVICE ML</span>
+      <h3>ChessLM</h3>
+      <p>A small language model taught to play chess, trained entirely on a MacBook. I fine-tuned Qwen2.5-1.5B with LoRA on Apple Silicon (MLX) so one model both proposes moves and evaluates positions, then plays through an AlphaZero-style PUCT search that can never make an illegal move. It learns from its own games through expert iteration, and a retrieval-augmented coach explains each move using the Lichess opening database and vector search over chess principles. You can play it on a web board.</p>
+      <div class="stats"><div><b>~1020</b><small>Elo vs. calibrated Stockfish</small></div><div><b>32→27%</b><small>blunder rate after self-play</small></div><div><b>0.867</b><small>eval correlation with Stockfish</small></div></div>
+      <div class="tags"><span>Python</span><span>MLX</span><span>LoRA</span><span>PUCT search</span><span>RAG</span><span>FastAPI</span></div>
+    </article>
+
+    <article class="card feature" data-cat="apple ai">
+      <span class="status">macOS APP</span>
+      <h3>NotchAsk</h3>
+      <p>Turns the MacBook notch into an AI assistant. Hover or hit a hotkey and ask about whatever is on screen, drop in files or a screenshot region, or just talk. It runs local models through Ollama or cloud providers, and redacts sensitive text before anything leaves your Mac. Between questions, the notch doubles as a live panel: now-playing music with a glow that pulses to the beat (detected from the bass in real time), timers, calendar and system stats.</p>
+      <div class="tags"><span>Swift</span><span>SwiftUI</span><span>Ollama</span><span>Speech</span><span>Screen capture</span><span>Sparkle updates</span></div>
+    </article>
+
+    <article class="card" data-cat="web">
+      <span class="status">3D / WEB</span>
+      <h3>Apex F1 Circuit Simulator &amp; 3D F1 Visualizer</h3>
+      <p>Two Formula 1 projects: a circuit simulator that races cars around real track layouts, and a holographic-style 3D visualizer of F1 data in the browser.</p>
+      <div class="tags"><span>Vite</span><span>Three.js</span><span>JavaScript</span></div>
+      <div class="links"><a href="https://github.com/agcodin/F1-Tracker" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card" data-cat="web">
+      <span class="status">CLIENT SITE</span>
+      <h3>VectorAcad</h3>
+      <p>Website for a physics tutoring service covering AP Physics 1, 2 and C plus Honors and Regular physics, run by an educator with nearly 15 years of teaching experience.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span></div>
+      <div class="links"><a href="https://github.com/agcodin/VectorAcad" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card" data-cat="apple">
+      <span class="status">iOS APP</span>
+      <h3>Concert Ticket Wallet</h3>
+      <p>An iOS app for keeping concert tickets in one place, backed by a signing server that generates wallet passes.</p>
+      <div class="tags"><span>Swift</span><span>Wallet passes</span><span>Server</span></div>
+    </article>
+
+    <article class="card" data-cat="apple">
+      <span class="status">iOS APP</span>
+      <h3>Photo PDF Compressor</h3>
+      <p>Shrinks photos and PDFs on-device so they fit upload limits, without sending files anywhere.</p>
+      <div class="tags"><span>Swift</span><span>On-device</span></div>
+    </article>
+
+    <article class="card" data-cat="ai">
+      <span class="status">CODEPATH</span>
+      <h3>RAG, Agents &amp; Moderation API</h3>
+      <p>Four deployed apps from the CodePath AI Systems cohort: retrieval-augmented generation pipelines, multi-tool agents, and a content moderation API hardened against prompt injection.</p>
+      <div class="tags"><span>Flask</span><span>ChromaDB</span><span>Python</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="two">
+    <div>
+      <div class="shead"><h2>Skills</h2></div>
+      <dl class="skills">
+        <dt>Specialties</dt><dd>Low-latency systems, reinforcement learning (PPO), self-play, memory pools, pybind11, PyTorch</dd>
+        <dt>Languages</dt><dd>C++20, Python, Java, JavaScript, Swift, R, SQL</dd>
+        <dt>Machine learning</dt><dd>GRUs, RAG, vector databases, multi-tool agents, prompt-injection defense, quant strategy design &amp; backtesting</dd>
+        <dt>Systems &amp; backend</dt><dd>Flask, Firebase, Stripe Connect, Twilio, ChromaDB, Git, database design, sandboxed environments</dd>
+      </dl>
+    </div>
+    <div>
+      <div class="shead"><h2>Education</h2></div>
+      <p><b>Purdue University</b><br>B.S. Data Science and Artificial Intelligence · Expected 2028</p>
+      <div class="shead" style="margin-top:28px"><h2>Certifications</h2></div>
+      <ul style="padding-left:18px;margin:0">
+        <li>Google AI Essentials</li>
+        <li>AI Fluency: Framework and Foundations</li>
+        <li>Claude 101 — Introduction to Model Context Protocol</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <span>Aryan Gaur · <a href="mailto:aryangaur926@gmail.com">aryangaur926@gmail.com</a></span>
+  <span><a href="https://www.linkedin.com/in/aryan-gaur-139a16290" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/agcodin" target="_blank" rel="noopener">GitHub</a></span>
+</footer>
+</div>
+
+<script>
+// Toy price-time-priority book: resting liquidity per tick, market orders sweep levels.
+const book={asks:new Map(),bids:new Map()};let mid=100.00;const tick=.01;
+const r=n=>Math.round(n*100)/100;
+function seed(){for(let i=1;i<=6;i++){book.asks.set(r(mid+i*tick),20+Math.floor(Math.random()*80));book.bids.set(r(mid-i*tick),20+Math.floor(Math.random()*80));}}
+function best(side){const k=[...book[side].keys()];return side==="asks"?Math.min(...k):Math.max(...k);}
+function refill(){
+  while(book.asks.size<6){const p=r((book.asks.size?Math.max(...book.asks.keys()):best("bids"))+tick);book.asks.set(p,20+Math.floor(Math.random()*80));}
+  while(book.bids.size<6){const p=r((book.bids.size?Math.min(...book.bids.keys()):best("asks"))-tick);book.bids.set(p,20+Math.floor(Math.random()*80));}
+}
+function market(side,qty){
+  const book_side=side==="buy"?"asks":"bids";const fills=[];
+  while(qty>0&&book[book_side].size){const p=best(book_side);const q=book[book_side].get(p);const f=Math.min(q,qty);fills.push(f+"@"+p.toFixed(2));qty-=f;q-f?book[book_side].set(p,q-f):book[book_side].delete(p);}
+  refill();log(side.toUpperCase()+" "+fills.join(" "));render();
+}
+function log(t){const el=document.getElementById("tape");el.textContent=t+"\n"+el.textContent.split("\n")[0];}
+function render(){
+  const max=Math.max(...book.asks.values(),...book.bids.values());
+  const row=(p,q,c)=>`<div class="lvl ${c}"><i style="width:${q/max*100}%"></i><span>${p.toFixed(2)}</span><span>${q}</span></div>`;
+  document.getElementById("asks").innerHTML=[...book.asks].sort((a,b)=>b[0]-a[0]).slice(-6).map(([p,q])=>row(p,q,"a")).join("");
+  document.getElementById("bids").innerHTML=[...book.bids].sort((a,b)=>b[0]-a[0]).slice(0,6).map(([p,q])=>row(p,q,"b")).join("");
+  const a=best("asks"),b=best("bids");
+  document.getElementById("spr").textContent=r(a-b).toFixed(2);
+  document.getElementById("px").textContent="mid "+((a+b)/2).toFixed(3);
+}
+seed();render();
+document.getElementById("buy").onclick=()=>market("buy",40);
+document.getElementById("sell").onclick=()=>market("sell",40);
+// Ambient limit-order flow so the book looks alive.
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches)setInterval(()=>{
+  const side=Math.random()<.5?"asks":"bids";const keys=[...book[side].keys()];const p=keys[Math.floor(Math.random()*keys.length)];
+  book[side].set(p,Math.max(1,book[side].get(p)+Math.floor(Math.random()*21)-8));render();
+},900);
+
+document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  document.querySelectorAll("#grid .card").forEach(c=>c.hidden=b.dataset.f!=="all"&&!c.dataset.cat.split(" ").includes(b.dataset.f));
+});
+</script>
+</body>
+</html>
