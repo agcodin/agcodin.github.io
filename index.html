@@ -27,6 +27,7 @@ nav>span{font:800 16px var(--display);color:var(--ink)}
 nav div{display:flex;gap:4px;flex-wrap:wrap}
 nav a{color:var(--muted);text-decoration:none;padding:5px 12px;border-radius:999px;font-size:14px;font-weight:600}
 nav a:hover{background:var(--chip);color:var(--ink)}
+.hero.solo{grid-template-columns:1fr;max-width:760px}
 .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;padding-block:64px 56px;align-items:center}
 h1{font:800 clamp(46px,7.5vw,84px)/1 var(--display);letter-spacing:-.02em;margin:0 0 18px}
 h1 br{display:none}
@@ -41,6 +42,7 @@ section{padding-block:48px}
 .shead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 .shead p{color:var(--muted);margin:0}
 /* order book */
+.card .book{max-width:420px;margin-block:6px}
 .book{position:relative;background:#ffffffd9;border-radius:24px;padding:20px;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;box-shadow:0 20px 50px #B7A6FF40}
 .book::before{content:"";position:absolute;inset:-18px -14px auto auto;width:120px;height:120px;border-radius:42% 58% 55% 45%/50% 40% 60% 50%;background:radial-gradient(circle at 30% 30%,var(--lav),var(--peach) 70%);z-index:-1}
 .book-top{display:flex;justify-content:space-between;color:var(--muted);margin-bottom:10px;gap:8px;flex-wrap:wrap;font-family:var(--body);font-weight:600}
@@ -106,7 +108,7 @@ footer a{color:var(--lav)}
   <div><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
 </nav>
 
-<header class="hero">
+<header class="hero solo">
   <div>
     <h1>Hey, I’m Aryan.</h1>
     <p class="lede">I build fast systems and useful products — a 4–7&nbsp;ns order-book engine, RL market makers, and a platform where engineers practice real incidents.</p>
@@ -120,15 +122,7 @@ footer a{color:var(--lav)}
       <a class="btn" href="https://github.com/agcodin" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
-  <div class="book" aria-label="Interactive limit order book demo">
-    <div class="book-top"><span>LOB · SIM</span><span id="px">mid —</span></div>
-    <div id="asks"></div>
-    <div class="spread"><span>spread</span><span id="spr">—</span></div>
-    <div id="bids"></div>
-    <div class="book-btns"><button id="buy">Market buy 40</button><button id="sell">Market sell 40</button></div>
-    <div class="tape" id="tape">Price-time priority matching, running in your browser.</div>
-  </div>
-</header>
+  </header>
 
 <section id="work">
   <div class="shead"><h2>Experience</h2><p>Where I’ve worked and built</p></div>
@@ -180,8 +174,7 @@ footer a{color:var(--lav)}
     <button aria-pressed="false" data-f="ai">AI &amp; agents</button>
     <button aria-pressed="false" data-f="quant">Quant &amp; systems</button>
     <button aria-pressed="false" data-f="web">Web</button>
-    <button aria-pressed="false" data-f="apple">macOS / iOS</button>
-  </div>
+      </div>
 
   <div class="grid" id="grid">
     <article class="card feature" data-cat="ai web">
@@ -194,48 +187,18 @@ footer a{color:var(--lav)}
     </article>
 
     <article class="card feature" data-cat="quant">
-      <span class="status">DEMO ABOVE · IN-BROWSER SIM</span>
+      <span class="status">LIVE DEMO BELOW · RUNS IN YOUR BROWSER</span>
       <h3>Limit Order Book Engine &amp; RL Market Makers</h3>
       <p>A zero-heap-allocation C++20 matching engine (4–7&nbsp;ns median per operation) using a pre-allocated object pool, intrusive price levels and a direct-indexed price map, bound to Python with pybind11 over zero-copy NumPy buffers. PPO agents trained through self-play against Hawkes-clustered order flow and informed traders beat the Avellaneda–Stoikov strategy in an adverse-selection regime where it lost money. A GRU estimator recovers the hidden fair value from order flow and feeds the policy directly.</p>
+      <div class="book" aria-label="Interactive limit order book demo">
+    <div class="book-top"><span>LOB · SIM</span><span id="px">mid —</span></div>
+    <div id="asks"></div>
+    <div class="spread"><span>spread</span><span id="spr">—</span></div>
+    <div id="bids"></div>
+    <div class="book-btns"><button id="buy">Market buy 40</button><button id="sell">Market sell 40</button></div>
+    <div class="tape" id="tape">Price-time priority matching, running in your browser.</div>
       <div class="tags"><span>C++20</span><span>pybind11</span><span>PyTorch</span><span>PPO</span><span>GRU</span></div>
-      <div class="links"><a href="#top" onclick="document.querySelector('.book').scrollIntoView({behavior:'smooth'});return false">Try the order book ↑</a><a href="https://github.com/agcodin/lob-rl-market-maker" target="_blank" rel="noopener">GitHub ↗</a></div>
-    </article>
-
-    <article class="card" data-cat="quant">
-      <span class="status">PRIVATE · BACKTESTED</span>
-      <h3>Polymarket Consensus Bot</h3>
-      <p>Scores the top 200 Polymarket traders on win rate, profit factor and drawdown, and enters when enough qualified traders converge on a market — filtered by category, price range and freshness. Exits when that group starts selling. Two-year backtest: 125.8% simulated return, 53.1% win rate, Sharpe 1.4. Ships with a simulation dashboard and per-signal audit logs.</p>
-      <div class="tags"><span>Python</span><span>Backtesting</span><span>Dashboard</span></div>
-      <div class="links"><a href="mailto:aryangaur926@gmail.com?subject=Polymarket%20bot%20demo">Request a walkthrough</a></div>
-    </article>
-
-    <article class="card" data-cat="quant">
-      <span class="status">SIMULATOR</span>
-      <h3>Solana Copy-Trader Simulator</h3>
-      <p>Paper-trades a target wallet’s live swaps with realistic latency, live Jupiter pricing and network fees. No private keys, no signing, no real funds — every trade is a row in a local ledger, so you can see whether copying a wallet would actually pay.</p>
-      <div class="tags"><span>Python</span><span>Solana</span><span>Jupiter API</span></div>
-    </article>
-
-    <article class="card" data-cat="ai">
-      <span class="status">SLACK AGENT BUILDER CHALLENGE</span>
-      <h3>Sentinel Agent</h3>
-      <p>A Slack agent that breaks a goal into tracked tasks, follows progress from git branches and team chat, and doubles as a security assistant: paste a dependency manifest and it checks the National Vulnerability Database and replies with the exact upgrade command.</p>
-      <div class="tags"><span>Slack API</span><span>NVD</span><span>Agents</span></div>
-    </article>
-
-    <article class="card" data-cat="ai web">
-      <span class="status">WEB APP</span>
-      <h3>BlockSmith</h3>
-      <p>Describe a Minecraft build in plain English and get a 3D voxel preview, a supply list in stack counts, and a layer-by-layer guide you can follow in-game.</p>
-      <div class="tags"><span>LLM</span><span>3D voxels</span><span>JavaScript</span></div>
-    </article>
-
-    <article class="card" data-cat="web">
-      <span class="status live">LIVE</span>
-      <h3>Hourbook</h3>
-      <p>Track where your time goes: log sessions on a month calendar, see totals per category, and attach your own metric (points won, pages read, calories). Works offline in the browser; Google sign-in syncs across devices through Firebase.</p>
-      <div class="tags"><span>JavaScript</span><span>Firebase</span></div>
-      <div class="links"><a href="https://agcodin.github.io/hourbook/" target="_blank" rel="noopener">Open live demo ↗</a><a href="https://github.com/agcodin/hourbook" target="_blank" rel="noopener">GitHub ↗</a></div>
+      <div class="links"><a href="https://github.com/agcodin/lob-rl-market-maker" target="_blank" rel="noopener">GitHub ↗</a></div>
     </article>
 
     <article class="card feature" data-cat="ai">
@@ -253,34 +216,26 @@ footer a{color:var(--lav)}
       <div class="tags"><span>Swift</span><span>SwiftUI</span><span>Ollama</span><span>Speech</span><span>Screen capture</span><span>Sparkle updates</span></div>
     </article>
 
-    <article class="card" data-cat="web">
-      <span class="status">3D / WEB</span>
-      <h3>Apex F1 Circuit Simulator &amp; 3D F1 Visualizer</h3>
-      <p>Two Formula 1 projects: a circuit simulator that races cars around real track layouts, and a holographic-style 3D visualizer of F1 data in the browser.</p>
-      <div class="tags"><span>Vite</span><span>Three.js</span><span>JavaScript</span></div>
-      <div class="links"><a href="https://github.com/agcodin/F1-Tracker" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <article class="card" data-cat="quant">
+      <span class="status">PRIVATE · BACKTESTED</span>
+      <h3>Polymarket Consensus Bot</h3>
+      <p>Scores the top 200 Polymarket traders on win rate, profit factor and drawdown, and enters when enough qualified traders converge on a market — filtered by category, price range and freshness. Exits when that group starts selling. Two-year backtest: 125.8% simulated return, 53.1% win rate, Sharpe 1.4. Ships with a simulation dashboard and per-signal audit logs.</p>
+      <div class="tags"><span>Python</span><span>Backtesting</span><span>Dashboard</span></div>
+      <div class="links"><a href="mailto:aryangaur926@gmail.com?subject=Polymarket%20bot%20demo">Request a walkthrough</a></div>
     </article>
 
-    <article class="card" data-cat="web">
-      <span class="status">CLIENT SITE</span>
-      <h3>VectorAcad</h3>
-      <p>Website for a physics tutoring service covering AP Physics 1, 2 and C plus Honors and Regular physics, run by an educator with nearly 15 years of teaching experience.</p>
-      <div class="tags"><span>HTML</span><span>CSS</span></div>
-      <div class="links"><a href="https://github.com/agcodin/VectorAcad" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <article class="card" data-cat="ai">
+      <span class="status">SLACK AGENT BUILDER CHALLENGE</span>
+      <h3>Sentinel Agent</h3>
+      <p>A Slack agent that breaks a goal into tracked tasks, follows progress from git branches and team chat, and doubles as a security assistant: paste a dependency manifest and it checks the National Vulnerability Database and replies with the exact upgrade command.</p>
+      <div class="tags"><span>Slack API</span><span>NVD</span><span>Agents</span></div>
     </article>
 
-    <article class="card" data-cat="apple">
-      <span class="status">iOS APP</span>
-      <h3>Concert Ticket Wallet</h3>
-      <p>An iOS app for keeping concert tickets in one place, backed by a signing server that generates wallet passes.</p>
-      <div class="tags"><span>Swift</span><span>Wallet passes</span><span>Server</span></div>
-    </article>
-
-    <article class="card" data-cat="apple">
-      <span class="status">iOS APP</span>
-      <h3>Photo PDF Compressor</h3>
-      <p>Shrinks photos and PDFs on-device so they fit upload limits, without sending files anywhere.</p>
-      <div class="tags"><span>Swift</span><span>On-device</span></div>
+    <article class="card" data-cat="ai web">
+      <span class="status">WEB APP</span>
+      <h3>BlockSmith</h3>
+      <p>Describe a Minecraft build in plain English and get a 3D voxel preview, a supply list in stack counts, and a layer-by-layer guide you can follow in-game.</p>
+      <div class="tags"><span>LLM</span><span>3D voxels</span><span>JavaScript</span></div>
     </article>
 
     <article class="card" data-cat="ai">
