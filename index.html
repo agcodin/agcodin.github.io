@@ -196,6 +196,15 @@ footer a{color:var(--lav)}
     </article>
 
     <article class="card feature" data-cat="ai">
+      <span class="status live">LIVE IN YOUR BROWSER</span>
+      <h3>RB21 Self-Learning Driver</h3>
+      <p>A neural driver that teaches itself to put a 2025-spec Red Bull RB21 round Monza, Spa and the Circuit of the Americas — rebuilt to scale with real elevation — and you watch the car on track while it learns. Instead of a steering output, it picks one of seven typed braking and throttle decisions and predicts how confident it is that the choice will work out; that prediction is graded against what actually happened three-quarters of a second later. Training is evolution strategies over a 2,649-parameter network, and the fix that unlocked it was making a crash forfeit the distance the car could still have covered, which turned surviving a braking zone into something worth doing.</p>
+      <div class="stats"><div><b>1:26.275</b><small>Monza, 9.5% off the physics limit</small></div><div><b>7</b><small>circuits driven by one set of weights</small></div><div><b>1:42.3</b><small>Suzuka, a circuit it never trained on</small></div></div>
+      <div class="tags"><span>JavaScript</span><span>Evolution strategies</span><span>Vehicle physics</span><span>Web Workers</span></div>
+      <div class="links"><a href="https://agcodin.github.io/f1-self-driving/" target="_blank" rel="noopener">Watch it drive ↗</a><a href="https://github.com/agcodin/f1-self-driving" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card feature" data-cat="ai">
       <span class="status">PYTHON · ON-DEVICE ML</span>
       <h3>ChessLM</h3>
       <p>A small language model taught to play chess, trained entirely on a MacBook. I fine-tuned Qwen2.5-1.5B with LoRA on Apple Silicon (MLX) so one model both proposes moves and evaluates positions, then plays through an AlphaZero-style PUCT search that can never make an illegal move. It learns from its own games through expert iteration, and a retrieval-augmented coach explains each move using the Lichess opening database and vector search over chess principles. You can play it on a web board.</p>
@@ -218,6 +227,22 @@ footer a{color:var(--lav)}
       <p>Scores the top 200 Polymarket traders on win rate, profit factor and drawdown, and enters when enough qualified traders converge on a market — filtered by category, price range and freshness. Exits when that group starts selling. Two-year backtest: 125.8% simulated return, 53.1% win rate, Sharpe 1.4. Ships with a simulation dashboard and per-signal audit logs.</p>
       <div class="tags"><span>Python</span><span>Backtesting</span><span>Dashboard</span></div>
       <div class="links"><a href="mailto:aryangaur926@gmail.com?subject=Polymarket%20bot%20demo">Request a walkthrough</a></div>
+    </article>
+
+    <article class="card" data-cat="web">
+      <span class="status live">LIVE</span>
+      <h3>Plate Ledger</h3>
+      <p>A calorie and macro tracker for people who eat Indian food, instead of asking them to log a dosa as "pancake". 349 foods weighted toward South Indian cooking, measured in units people actually use — per idli, a ladle of sambar, a tumbler of filter coffee — with a nutrition-label view of the day and your running deficit over the week. Plain ES modules, no build step; Google sign-in syncs through Firebase.</p>
+      <div class="tags"><span>JavaScript</span><span>Firebase</span><span>Nutrition data</span></div>
+      <div class="links"><a href="https://agcodin.github.io/plate-ledger/" target="_blank" rel="noopener">Open it ↗</a><a href="https://github.com/agcodin/plate-ledger" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </article>
+
+    <article class="card" data-cat="web">
+      <span class="status live">LIVE</span>
+      <h3>Recall</h3>
+      <p>A flashcard app in the spirit of Quizlet: build a set, flip through it to jog your memory, then type every answer until you get the whole set right. Study as a guest with sets kept in the browser, or sign in with Google and have them follow you across devices through Firestore.</p>
+      <div class="tags"><span>JavaScript</span><span>Firestore</span><span>Firebase Auth</span></div>
+      <div class="links"><a href="https://agcodin.github.io/recall-flashcards/" target="_blank" rel="noopener">Open it ↗</a><a href="https://github.com/agcodin/recall-flashcards" target="_blank" rel="noopener">GitHub ↗</a></div>
     </article>
 
     </div>
