@@ -27,13 +27,6 @@ nav>span{font:800 16px var(--display);color:var(--ink)}
 nav div{display:flex;gap:4px;flex-wrap:wrap}
 nav a{color:var(--muted);text-decoration:none;padding:5px 12px;border-radius:999px;font-size:14px;font-weight:600}
 nav a:hover{background:var(--chip);color:var(--ink)}
-.quick{padding-block:8px 28px}
-.quick-id b{display:block;font:800 clamp(28px,6vw,40px)/1.1 var(--display);letter-spacing:-.02em}
-.quick-id span{display:block;color:var(--muted);font-weight:600;margin-top:6px}
-.quick-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
-.qbtn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:10px 14px;border-radius:16px;border:1px solid var(--line);background:#ffffffe6;color:var(--ink);font:700 16px var(--body);text-decoration:none;text-align:center;overflow-wrap:anywhere}
-.qbtn.fill{background:var(--ink);color:#fff;border-color:var(--ink)}
-.qbtn.wide{grid-column:1/-1}
 .hero.solo{grid-template-columns:1fr;max-width:760px}
 .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;padding-block:64px 56px;align-items:center}
 h1{font:800 clamp(46px,7.5vw,84px)/1 var(--display);letter-spacing:-.02em;margin:0 0 18px}
@@ -98,27 +91,10 @@ section{padding-block:48px}
 footer{background:var(--ink);color:#E6E1FA;border-radius:22px;padding:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a{color:var(--lav)}
 @media (max-width:760px){
-  body{padding-inline:16px}
-  .wrap{padding-block:20px 56px}
   .hero,.two{grid-template-columns:1fr}
-  .hero{padding-block:32px 24px}
-  .job{grid-template-columns:1fr;gap:4px;padding:20px}
+  .job{grid-template-columns:1fr;gap:4px}
   .grid{grid-template-columns:1fr}
-  .card,.two>div{padding:20px}
-  .quick-btns{grid-template-columns:1fr 1fr}
-  .qbtn.fill,.qbtn.tel{grid-column:1/-1}
-  h2{font-size:30px}
-  .lede{font-size:17px}
-  .stats{gap:18px}
-  .stats b{font-size:24px}
-  nav{border-radius:999px;padding:6px 8px;flex-wrap:nowrap}
-  nav>span{display:none}
-  nav div{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%;justify-content:space-between}
-  nav div::-webkit-scrollbar{display:none}
-  nav a{white-space:nowrap;padding:8px 12px}
-  .btn,.links a,.filters button{min-height:44px;display:inline-flex;align-items:center}
-  .book-btns button{min-height:44px}
-  footer{flex-direction:column}
+  nav{border-radius:22px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -127,20 +103,6 @@ footer a{color:var(--lav)}
 
 
 <div class="wrap">
-<section class="quick" aria-label="Contact">
-  <div class="quick-id">
-    <b>Aryan Gaur</b>
-    <span>Data Science &amp; AI · Purdue · Seeking Summer 2027 internships</span>
-  </div>
-  <div class="quick-btns">
-    <a class="qbtn fill" href="aryan-gaur.vcf" download="Aryan Gaur.vcf">Save my contact</a>
-    <a class="qbtn" href="https://www.linkedin.com/in/aryan-gaur-139a16290" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="qbtn" href="https://github.com/agcodin" target="_blank" rel="noopener">GitHub</a>
-    <a class="qbtn tel" href="tel:+16099006222">609-900-6222</a>
-    <a class="qbtn wide" href="mailto:aryangaur926@gmail.com">aryangaur926@gmail.com</a>
-  </div>
-</section>
-
 <nav>
   <span class="mono">aryan gaur</span>
   <div><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
@@ -156,6 +118,8 @@ footer a{color:var(--lav)}
     </div>
     <div class="cta">
       <a class="btn fill" href="#projects">See projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/aryan-gaur-139a16290" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/agcodin" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
   </header>
@@ -317,7 +281,7 @@ footer a{color:var(--lav)}
 </section>
 
 <footer id="contact">
-  <span>Aryan Gaur · <a href="mailto:aryangaur926@gmail.com">aryangaur926@gmail.com</a> · <a href="tel:+16099006222">609-900-6222</a> · <a href="aryan-gaur.vcf" download="Aryan Gaur.vcf">Save contact</a></span>
+  <span>Aryan Gaur · <a href="mailto:aryangaur926@gmail.com">aryangaur926@gmail.com</a></span>
   <span><a href="https://www.linkedin.com/in/aryan-gaur-139a16290" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/agcodin" target="_blank" rel="noopener">GitHub</a></span>
 </footer>
 </div>
