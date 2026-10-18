@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Gaur;Aryan;;;
+FN:Aryan Gaur
+ORG:Purdue University
+TITLE:Data Science & AI Student
+TEL;TYPE=CELL:+16099006222
+EMAIL;TYPE=INTERNET:aryangaur926@gmail.com
+URL:https://agcodin.github.io
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/aryan-gaur-139a16290
+URL;TYPE=GitHub:https://github.com/agcodin
+NOTE:Seeking Summer 2027 SWE & Data/ML internships.
+END:VCARD
