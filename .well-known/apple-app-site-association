@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["X8LN4SCNXT.com.aryangaur.taplock"],
+        "components": [{ "/": "/taplock/*" }]
+      }
+    ]
+  }
+}
