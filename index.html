@@ -214,7 +214,7 @@ footer .soc svg{width:20px;height:20px}
       <span class="status">C++20 · SIMULATED FLIGHT SOFTWARE</span>
       <h3>Flight Telemetry</h3>
       <p>A simulated rocket sends IMU, barometer and GPS packets over a lossy link, and this C++20 receiver parses the byte stream, estimates altitude and vertical velocity with a Kalman filter, and drives a flight-mode state machine from preflight through landing. The parser resyncs after garbage, bad CRCs, truncation, duplicates and reordering. Noise parameters are fitted from simulated flights with a Python script. Everything runs on a simulator, with no real hardware or flight data.</p>
-      <div class="stats"><div><b>67</b><small>test cases, also run under ASan + UBSan</small></div><div><b>100,000</b><small>fuzzed inputs with no crash</small></div><div><b>0.208&nbsp;m</b><small>worst-case altitude RMSE on 40 harsh-link flights</small></div></div>
+      <div class="stats"><div><b>67</b><small>test cases, also run under ASan + UBSan</small></div><div><b>100,000</b><small>fuzzed inputs with no crash</small></div><div><b>0.208&nbsp;m</b><small>altitude RMSE on 40 unseen harsh-link flights</small></div></div>
       <div class="tags"><span>C++20</span><span>Kalman filter</span><span>State machine</span><span>Fuzzing</span><span>CI</span></div>
       <div class="links"><a href="https://github.com/agcodin/flight-telemetry" target="_blank" rel="noopener">GitHub ↗</a></div>
     </article>
