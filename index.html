@@ -228,6 +228,32 @@ footer .soc svg{width:20px;height:20px}
       <div class="links"><a href="https://github.com/agcodin/kvstore-wal" target="_blank" rel="noopener">GitHub ↗</a><a href="https://github.com/agcodin/kvstore-wal/blob/main/docs/writeup.md" target="_blank" rel="noopener">Read the writeup ↗</a></div>
     </article>
 
+    <article class="card feature" data-cat="systems">
+      <span class="status">C++20 · OPEN PULL REQUEST</span>
+      <h3>AnyPS5 AVX2 Lowering</h3>
+      <p>AnyPS5 is an open source tool that ports PS5 executables to Linux and Windows. I added a relinker pass that rewrites the AVX2 variable shifts (VPSLLVD, VPSLLVQ, VPSRLVD, VPSRLVQ and VPSRAVD) into scalar code, so a host with AVX but no AVX2 can still run them. The stub spills the vectors to a frame below the red zone, shifts each element, and keeps the saturating behaviour that the scalar shifts lack. It restores every register and the flags afterward. The pull request is open upstream and has not been merged.</p>
+      <div class="stats"><div><b>473</b><small>lines added across 6 files</small></div><div><b>843/843</b><small>tests pass on arm64 and under Rosetta 2</small></div></div>
+      <div class="tags"><span>C++20</span><span>x86-64</span><span>AVX2</span><span>Binary rewriting</span><span>CMake</span></div>
+      <div class="links"><a href="https://github.com/boykopovar/AnyPS5/pull/20917" target="_blank" rel="noopener">Pull request ↗</a></div>
+    </article>
+
+    <article class="card feature" data-cat="systems">
+      <span class="status">BUG REPORT · FILED WITH APPLE</span>
+      <h3>Rosetta 2 Shift Bug</h3>
+      <p>While writing a hardware oracle for the AnyPS5 work, I found that Rosetta 2 translates the AVX2 instructions VPSLLVQ and VPSRLVQ wrongly. It decides saturation from the low 32 bits of each 64-bit shift count, so a count that should give zero performs a small shift instead. Nothing faults, and the program just continues with a wrong value. I reduced it to about forty lines of C, wrote it up, and filed it with Apple as FB25600143.</p>
+      <div class="stats"><div><b>8 of 22</b><small>64-bit probe cases wrong</small></div><div><b>0 of 15</b><small>32-bit cases wrong</small></div></div>
+      <div class="tags"><span>Rosetta 2</span><span>x86-64</span><span>AVX2</span><span>Intel SDM</span><span>C</span></div>
+      <div class="links"><a href="https://github.com/boykopovar/AnyPS5/pull/20917" target="_blank" rel="noopener">Where I hit it ↗</a></div>
+    </article>
+
+    <article class="card feature" data-cat="systems ai web">
+      <span class="status">TYPESCRIPT · LOCAL-FIRST WRITING CHECKER</span>
+      <h3>Lucid</h3>
+      <p>A writing checker in the style of Grammarly that runs entirely on your machine and avoids the typing lag of browser extensions. It splits the document into paragraph blocks and re-lints only the block you edit, draws underlines with the CSS Custom Highlight API instead of DOM overlays, and loads the 20&nbsp;MB Harper WebAssembly engine once per browser. Spelling, grammar, clarity and tone checks never touch the network. Only the optional sentence rewrites call Claude, and only when you ask. The browser extension has not yet been tested in a real browser.</p>
+      <div class="stats"><div><b>2.4&nbsp;ms</b><small>main-thread work per keystroke at p95</small></div><div><b>313 → 1.5&nbsp;ms</b><small>grammar pass per edit, 116k characters</small></div><div><b>65 → 1.1&nbsp;ms</b><small>repaint of 3,200 underlines</small></div></div>
+      <div class="tags"><span>TypeScript</span><span>WebAssembly</span><span>Web Workers</span><span>Chrome MV3</span><span>Claude API</span></div>
+    </article>
+
     <article class="card feature" data-cat="ai">
       <span class="status live">LIVE IN YOUR BROWSER</span>
       <h3>RB21 Self-Learning Driver</h3>
