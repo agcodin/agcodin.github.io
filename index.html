@@ -243,7 +243,7 @@ footer .soc svg{width:20px;height:20px}
       <p>While writing a hardware oracle for the AnyPS5 work, I found that Rosetta 2 translates the AVX2 instructions VPSLLVQ and VPSRLVQ wrongly. It decides saturation from the low 32 bits of each 64-bit shift count, so a count that should give zero performs a small shift instead. Nothing faults, and the program just continues with a wrong value. I reduced it to about forty lines of C, wrote it up, and filed it with Apple as FB25600143.</p>
       <div class="stats"><div><b>8 of 22</b><small>64-bit probe cases wrong</small></div><div><b>0 of 15</b><small>32-bit cases wrong</small></div></div>
       <div class="tags"><span>Rosetta 2</span><span>x86-64</span><span>AVX2</span><span>Intel SDM</span><span>C</span></div>
-      <div class="links"><a href="https://github.com/boykopovar/AnyPS5/pull/20917" target="_blank" rel="noopener">Where I hit it ↗</a></div>
+      <div class="links"><a href="https://github.com/agcodin/rosetta-avx2-variable-shift" target="_blank" rel="noopener">Writeup and probe ↗</a><a href="https://github.com/boykopovar/AnyPS5/pull/20917" target="_blank" rel="noopener">Where I hit it ↗</a></div>
     </article>
 
     <article class="card feature" data-cat="systems ai web">
@@ -252,6 +252,7 @@ footer .soc svg{width:20px;height:20px}
       <p>A writing checker in the style of Grammarly that runs entirely on your machine and avoids the typing lag of browser extensions. It splits the document into paragraph blocks and re-lints only the block you edit, draws underlines with the CSS Custom Highlight API instead of DOM overlays, and loads the 20&nbsp;MB Harper WebAssembly engine once per browser. Spelling, grammar, clarity and tone checks never touch the network. Only the optional sentence rewrites call Claude, and only when you ask. The browser extension has not yet been tested in a real browser.</p>
       <div class="stats"><div><b>2.4&nbsp;ms</b><small>main-thread work per keystroke at p95</small></div><div><b>313 → 1.5&nbsp;ms</b><small>grammar pass per edit, 116k characters</small></div><div><b>65 → 1.1&nbsp;ms</b><small>repaint of 3,200 underlines</small></div></div>
       <div class="tags"><span>TypeScript</span><span>WebAssembly</span><span>Web Workers</span><span>Chrome MV3</span><span>Claude API</span></div>
+      <div class="links"><a href="https://github.com/agcodin/lucid" target="_blank" rel="noopener">GitHub ↗</a></div>
     </article>
 
     <article class="card feature" data-cat="ai">
